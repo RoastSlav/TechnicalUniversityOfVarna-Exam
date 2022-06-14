@@ -5,12 +5,11 @@
 using namespace std;
 
 
-//Използвани константи
+//Used constants
 const int MAXOFFICES = 50;
 const int MAXCURRENCIES = 10;
 const string EmptyString = "";
 
-//Структура на валутите
 struct Currency
 {
 	char ISO[3] = "";
@@ -19,7 +18,6 @@ struct Currency
 	float MaxExchange = 0;
 };
 
-//Структура на обменните офиси
 struct ExchangeOffice
 {
 	char Name[20] = "";
@@ -30,8 +28,8 @@ struct ExchangeOffice
 };
 
 
-//Функцията добавя обменно бюро към масива
-//Приема масив и брой на елементите в масива
+//Function adds exchange office to the array
+//Accepts an array and the count of the offices
 void AddOffice(ExchangeOffice officesArray[], int& officesCount)
 {
 	for (int i = 0; i < MAXOFFICES; i++)
@@ -68,8 +66,8 @@ void AddOffice(ExchangeOffice officesArray[], int& officesCount)
 	}
 }
 
-//Функцията добавя няколко на брой обменни бюра към масива
-//Приема масив и брой на елементите в масива
+//The function adds multiple exchange offices to the array
+//Accepts an array and the count of the offices
 void AddListOfOffices(ExchangeOffice officesArray[], int& officesCount)
 {
 	int countOfNewOffices = 0;
@@ -94,8 +92,8 @@ void AddListOfOffices(ExchangeOffice officesArray[], int& officesCount)
 	}
 }
 
-//Функцията издава към изходното устройство всички обменни бюра в масива
-//Приема масив от тип ExchangeOffice
+//The function outputs all of the exchange offices in the array
+//Accepts an array of type ExchangeOffice
 void PrintOffices(ExchangeOffice officesArray[])
 {
 	for (int i = 0; i < MAXOFFICES; i++)
@@ -134,8 +132,8 @@ void PrintOffices(ExchangeOffice officesArray[])
 	}
 }
 
-//Функцията издава към изходното устройство валутата с най-малка максимална стойност от всички бюра и всиюки други валути със същата стойност
-//Приема масив от тип ExchangeOffice
+//The function outputs the currency with the lowest exchange limit from all exchange offices and all other currencies(if there are any) with the same exchange limit
+//Accepts an array of type ExchangeOffice
 void PrintOfficesWithMinimal(ExchangeOffice officesArray[])
 {
 	float minExchange = officesArray[0].Currencies[0].MaxExchange;
@@ -184,8 +182,8 @@ void PrintOfficesWithMinimal(ExchangeOffice officesArray[])
 	}
 }
 
-//Функцията издава към изходното устройство всички обменни бюра в масива в даденият диапазон за годините на основаване
-//Приема масив от тип ExchangeOffice
+//The function outputs all exchange offices in the array that match the year of founding interval provided
+//Accepts an array of type ExchangeOffice
 void PrintOfficesWithFoundingYe(ExchangeOffice officesArray[])
 {
 	int startYear = 0;
@@ -222,8 +220,8 @@ void PrintOfficesWithFoundingYe(ExchangeOffice officesArray[])
 	}
 }
 
-//Функцията издава към изходното устройство всички обменни бюра в масива подредени по годината им на основаване
-//Приема масив от тип ExchangeOffice и броят на елементите в масива
+//The function outputs all exchange offfices in the array sorted by the year they were founded
+//Accepts an array of type ExchangeOffice and the count of elements in the array
 void PrintOfficesByYear(ExchangeOffice officesArray[], int* officesCount)
 {
 	for (int i = 0; i < *officesCount; i++)
@@ -263,8 +261,8 @@ void PrintOfficesByYear(ExchangeOffice officesArray[], int* officesCount)
 	}
 }
 
-//Функцията издава към изходното устройство всички обменни бюра, които имат дадената валута и е равна на най-нискта стойност от всички бюра
-//Приема масив от тип ExchangeOffice
+//The fucntion outputs all exchange offices that have the lowest price for a certain currency
+//Accepts an array of type ExchangeOffice
 void PrintOfficesByPriceOfCurrency(ExchangeOffice officesArray[])
 {
 	char tempISO[3] = "";
@@ -305,8 +303,8 @@ void PrintOfficesByPriceOfCurrency(ExchangeOffice officesArray[])
 }
 
 
-//Функцията издава към изходното устройство всички обменни бюра в масива, които имат валута с по-малка максимална стойност от въведената
-//Приема масив от тип ExchangeOffice
+//The function outputs all exchange offices in the array that have higher max exchange limits than the one provided one
+//Accepts an array of type ExchangeOffice
 void PrintOfficesByMax(ExchangeOffice officesArray[])
 {
 	float minExchange = 0;
@@ -344,8 +342,8 @@ void PrintOfficesByMax(ExchangeOffice officesArray[])
 	}
 }
 
-//Функцията издава към изходното устройство всички обменни бюра в масива, които имат по-малко от шест валути
-//Приема масив от тип ExchangeOffice
+//The function outputs all exchange offices in the array that have less than six currencies.
+//Accepts an arrray of type ExchangeOffice
 void PrintOfficesWithLessThanSix(ExchangeOffice officesArray[])
 {
 	for (int i = 0; i < MAXOFFICES; i++)
@@ -374,8 +372,8 @@ void PrintOfficesWithLessThanSix(ExchangeOffice officesArray[])
 	}
 }
 
-//Функцията служи за подменю за функциите, които служат за извеждане на данни
-//Приема масив от тип ExchangeOffice и броят на елементите в масива
+//The function is used for a submenu for the function that output data
+//Accepts an array of type ExchangeOffice and the count of elements in the array
 void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 {
 	unsigned short option = 0;
@@ -464,8 +462,8 @@ void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 }
 
 
-//Функцията извежда сегашните стойности на бюрото и приема новите
-//Приема масив от тип ExchangeOffice
+//The function allow editing the existing exhcange offices
+//Accepts an array of type ExchangeOffice
 void EditOffices(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
@@ -506,8 +504,8 @@ void EditOffices(ExchangeOffice officesArray[])
 }
 
 
-//Функцията добавя нова валута към съществъващ офис
-//Приема масив от тип ExchangeOffice
+//The function adds a new currency to an exsisting exchange offfice
+//Accepts an array of type ExchangeOffice
 void AddCurrencyToOffice(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
@@ -557,8 +555,8 @@ void AddCurrencyToOffice(ExchangeOffice officesArray[])
 	system("pause");
 }
 
-//Функцията обменя валута като след като я обмени намалява максималната стойност
-//Приема масив от тип ExchangeOffice
+//The fucntion exchanges the currency in a certaion exchange office
+//Accepts an array of type ExchangeOffice
 void ExchangeCurrency(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
@@ -625,8 +623,8 @@ void ExchangeCurrency(ExchangeOffice officesArray[])
 	system("pause");
 }
 
-//Функцията запазва данните от масива във фаил
-//Приема масив от тип ExchangeOffice и брой на елементи в масива
+//The function saves the data in the array to a file
+//Accepts an array of type ExchangeOffice and the count of the elements in the array
 void OfficeBinaryFileSave(ExchangeOffice officesArray[], int* officesCount)
 {
 	fstream file;
@@ -639,8 +637,8 @@ void OfficeBinaryFileSave(ExchangeOffice officesArray[], int* officesCount)
 	system("pause");
 }
 
-//Функцията чете данните от фаил и ги записва в масив и предава броят на елементите към променливата
-//Приема масив от тип ExchangeOffice и брой на елементи в масива
+//The function reads the data from the file and fills out the array
+//Accepts an array of type ExchangeOffice and the count of the elements in the array
 void OfficeBinaryFileRead(ExchangeOffice officesArray[], int& officesCount)
 {
 	fstream file;
@@ -659,7 +657,6 @@ void OfficeBinaryFileRead(ExchangeOffice officesArray[], int& officesCount)
 }
 
 
-//Функцията служи за главно меню към функционалността на програмата
 int main()
 {
 	setlocale(LC_ALL, "BG");
