@@ -36,28 +36,28 @@ void AddOffice(ExchangeOffice officesArray[], int& officesCount)
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << "Добавяне на обменно бюро" << endl;
+			cout << "Adding an exchange office" << endl;
 
-			cout << "Име на обменното бюро:";
+			cout << "Exchange office name:";
 			string name = "";
 			cin.ignore();
 			getline(cin, name);
 			strcpy_s(officesArray[i].Name, name.c_str());
 
-			cout << "Година на основаване на обменното бюро:";
+			cout << "Founding year of the exchange office:";
 			cin >> officesArray[i].FoundingYear;
 
-			cout << "Регистрационен номер на обменното бюро:";
+			cout << "Registration number of the exchange office:";
 			cin >> officesArray[i].RegistrationNumber;
 
-			cout << "Добавяне на обменна валута към бюрото" << endl;
+			cout << "Adding a currency to the exchange office" << endl;
 			cout << "ISO:";
 			cin >> officesArray[i].Currencies[0].ISO;
-			cout << "Курс купува:";
+			cout << "Buying rate:";
 			cin >> officesArray[i].Currencies[0].BuyRate;
-			cout << "Курс продава:";
+			cout << "Selling rate:";
 			cin >> officesArray[i].Currencies[0].SellRate;
-			cout << "Максимална стойност за обмен:";
+			cout << "Available amount:";
 			cin >> officesArray[i].Currencies[0].MaxExchange;
 
 			officesCount += 1;
@@ -71,7 +71,7 @@ void AddOffice(ExchangeOffice officesArray[], int& officesCount)
 void AddListOfOffices(ExchangeOffice officesArray[], int& officesCount)
 {
 	int countOfNewOffices = 0;
-	cout << "Колко обменни бюра искате да добавите:";
+	cout << "How many exchange offices do you want to add:";
 	cin >> countOfNewOffices;
 
 	for (int i = 0; i < countOfNewOffices; i++)
@@ -82,8 +82,8 @@ void AddListOfOffices(ExchangeOffice officesArray[], int& officesCount)
 		if (i != countOfNewOffices - 1)
 		{
 			char anwser;
-			cout << "Искате ли да добавите друго обменно бюро?"
-				<< endl << "Изберете y за потвърждение или друга буква за отказ." << endl;
+			cout << "Would you like to add another exchange office?"
+				<< endl << "Enter \"y\" for yes or another key for no." << endl;
 			cin >> anwser;
 
 			if (anwser != 'y') break;
@@ -100,27 +100,27 @@ void PrintOffices(ExchangeOffice officesArray[])
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
 
-		cout << setw(10) << left << "Име: " << officesArray[i].Name << setw(10) << left << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-			<< setw(5) << left << " | Година на основаване: " << officesArray[i].FoundingYear << setw(2) << left << " | Брой валути: " << officesArray[i].AvailableCurrencies << endl;
+		cout << setw(10) << left << "Name: " << officesArray[i].Name << setw(10) << left << " | Registration number: " << officesArray[i].RegistrationNumber
+			<< setw(5) << left << " | Year of founding: " << officesArray[i].FoundingYear << setw(2) << left << " | Number of currencies: " << officesArray[i].AvailableCurrencies << endl;
 
-		cout << "Обменни валути: " << endl;
+		cout << "Currencies: " << endl;
 		for (int k = 0; k < MAXCURRENCIES; k++)
 		{
 			if (strcmp(EmptyString.c_str(), officesArray[i].Currencies[k].ISO) == 0) break;
-			cout << setw(3) << left << "ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Курс купува: " << officesArray[i].Currencies[k].BuyRate << setw(7) << left << " | Курс продава: " << officesArray[i].Currencies[k].SellRate
-				<< setw(5) << left << " | Максимална сума за обмен: " << officesArray[i].Currencies[k].MaxExchange << endl;
+			cout << setw(3) << left << "ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Buying rate: " << officesArray[i].Currencies[k].BuyRate << setw(7) << left << " | Selling rate: " 
+				<< officesArray[i].Currencies[k].SellRate << setw(5) << left << " | Available amount: " << officesArray[i].Currencies[k].MaxExchange << endl;
 		}
 		cout << endl;
 
 		if (i != 0 && (i + 1) % 5 == 0)
 		{
 			char choice;
-			cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+			cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 			cin >> choice;
 			if (choice == 'y')
 			{
@@ -156,7 +156,7 @@ void PrintOfficesWithMinimal(ExchangeOffice officesArray[])
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
@@ -166,15 +166,15 @@ void PrintOfficesWithMinimal(ExchangeOffice officesArray[])
 			if (strcmp(EmptyString.c_str(), officesArray[i].Currencies[k].ISO) == 0) break;
 			if (officesArray[i].Currencies[k].MaxExchange == minExchange)
 			{
-				cout << "Име: " << officesArray[i].Name << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-					<< " | Максимален сума за обмен: " << officesArray[i].Currencies[k].MaxExchange << " | ISO: " << officesArray[i].Currencies[k].ISO << endl;
+				cout << "Name: " << officesArray[i].Name << " | Registration number: " << officesArray[i].RegistrationNumber
+					<< " | Available amount: " << officesArray[i].Currencies[k].MaxExchange << " | ISO: " << officesArray[i].Currencies[k].ISO << endl;
 			}
 		}
 
 		if (i % 5 == 0 && i != 0)
 		{
 			char choice;
-			cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+			cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 			cin >> choice;
 			if (choice == 'y') continue;
 			else break;
@@ -188,9 +188,9 @@ void PrintOfficesWithFoundingYe(ExchangeOffice officesArray[])
 {
 	int startYear = 0;
 	int endYear = 0;
-	cout << "Въведете начална година: ";
+	cout << "Year - From: ";
 	cin >> startYear;
-	cout << "Въведете крайна година: ";
+	cout << "Year - To: ";
 	cin >> endYear;
 	system("CLS");
 
@@ -198,20 +198,20 @@ void PrintOfficesWithFoundingYe(ExchangeOffice officesArray[])
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
 
 		if (officesArray[i].FoundingYear >= startYear && officesArray[i].FoundingYear <= endYear)
 		{
-			cout << "Име: " << officesArray[i].Name << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-				<< " | Година на основаване: " << officesArray[i].FoundingYear << " | Брой валути: " << officesArray[i].AvailableCurrencies << endl;
+			cout << "Name: " << officesArray[i].Name << " | Registration number: " << officesArray[i].RegistrationNumber
+				<< " | Year of founding: " << officesArray[i].FoundingYear << " | Number of currencies: " << officesArray[i].AvailableCurrencies << endl;
 
 			if (i % 5 == 0 && i != 0)
 			{
 				char choice;
-				cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+				cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 				cin >> choice;
 				if (choice == 'y') continue;
 				else break;
@@ -241,19 +241,19 @@ void PrintOfficesByYear(ExchangeOffice officesArray[], int* officesCount)
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
 
 
-		cout << setw(10) << left << "Име: " << officesArray[i].Name << setw(10) << left << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-			<< setw(5) << left << " | Година на основаване: " << officesArray[i].FoundingYear << setw(2) << left << " | Брой валути: " << officesArray[i].AvailableCurrencies << endl;
+		cout << setw(10) << left << "Name: " << officesArray[i].Name << setw(10) << left << " | Registration number: " << officesArray[i].RegistrationNumber
+			<< setw(5) << left << " | Year of founding: " << officesArray[i].FoundingYear << setw(2) << left << " | Number of currencies: " << officesArray[i].AvailableCurrencies << endl;
 
 		if (i % 5 == 0 && i != 0)
 		{
 			char choice;
-			cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+			cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 			cin >> choice;
 			if (choice == 'y') continue;
 			else break;
@@ -285,7 +285,7 @@ void PrintOfficesByPriceOfCurrency(ExchangeOffice officesArray[])
 
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
@@ -295,8 +295,8 @@ void PrintOfficesByPriceOfCurrency(ExchangeOffice officesArray[])
 			if (strcmp(EmptyString.c_str(), officesArray[i].Currencies[k].ISO) == 0) break;
 			if (officesArray[i].Currencies[k].SellRate == lowestPrice)
 			{
-				cout << setw(10) << left << "Име: " << officesArray[i].Name << setw(10) << left << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-					<< setw(3) << left << " | ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Цена: " << officesArray[i].Currencies[k].SellRate << endl;
+				cout << setw(10) << left << "Name: " << officesArray[i].Name << setw(10) << left << " | Registration number: " << officesArray[i].RegistrationNumber
+					<< setw(3) << left << " | ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Selling rate: " << officesArray[i].Currencies[k].SellRate << endl;
 			}
 		}
 	}
@@ -308,7 +308,7 @@ void PrintOfficesByPriceOfCurrency(ExchangeOffice officesArray[])
 void PrintOfficesByMax(ExchangeOffice officesArray[])
 {
 	float minExchange = 0;
-	cout << "Въведете минимална наличност: ";
+	cout << "Enter minimal availability: ";
 	cin >> minExchange;
 	system("CLS");
 
@@ -316,7 +316,7 @@ void PrintOfficesByMax(ExchangeOffice officesArray[])
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
@@ -326,15 +326,15 @@ void PrintOfficesByMax(ExchangeOffice officesArray[])
 			if (strcmp(EmptyString.c_str(), officesArray[i].Currencies[k].ISO) == 0) break;
 			if (officesArray[i].Currencies[k].MaxExchange > minExchange)
 			{
-				cout << setw(10) << left << "Име: " << officesArray[i].Name << setw(10) << left << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-					<< setw(3) << left << " | ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Максимален сума за обмен: " << officesArray[i].Currencies[k].MaxExchange << endl;
+				cout << setw(10) << left << "Name: " << officesArray[i].Name << setw(10) << left << " | Registration number: " << officesArray[i].RegistrationNumber
+					<< setw(3) << left << " | ISO: " << officesArray[i].Currencies[k].ISO << setw(7) << left << " | Availability: " << officesArray[i].Currencies[k].MaxExchange << endl;
 			}
 		}
 
 		if (i % 5 == 0 && i != 0)
 		{
 			char choice;
-			cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+			cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 			cin >> choice;
 			if (choice == 'y') continue;
 			else break;
@@ -350,21 +350,21 @@ void PrintOfficesWithLessThanSix(ExchangeOffice officesArray[])
 	{
 		if (strcmp(EmptyString.c_str(), officesArray[i].Name) == 0)
 		{
-			cout << endl << "Край на обменните бюра" << endl;
+			cout << endl << "End of list" << endl;
 			system("pause");
 			break;
 		}
 
 		if (officesArray[i].AvailableCurrencies < 6)
 		{
-			cout << setw(10) << left << "Име: " << officesArray[i].Name << setw(10) << left << " | Регистрационен номер: " << officesArray[i].RegistrationNumber
-				<< setw(5) << left << " | Година на основаване: " << officesArray[i].FoundingYear << setw(2) << left << " | Брой валути: " << officesArray[i].AvailableCurrencies << endl;
+			cout << setw(10) << left << "Name: " << officesArray[i].Name << setw(10) << left << " | Registration number: " << officesArray[i].RegistrationNumber
+				<< setw(5) << left << " | Year of founding: " << officesArray[i].FoundingYear << setw(2) << left << " | Number of currencies: " << officesArray[i].AvailableCurrencies << endl;
 		}
 
 		if (i % 5 == 0 && i != 0)
 		{
 			char choice;
-			cout << endl << "Въведете \"y\" за да видите следващата страница" << endl;
+			cout << endl << "Enter \"y\" to see the next page or another key to exit" << endl;
 			cin >> choice;
 			if (choice == 'y') continue;
 			else break;
@@ -380,15 +380,15 @@ void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 	char choice = 'n';
 	do {
 		system("CLS");
-		cout << "\nИзберете действие" << endl;
-		cout << "1. Извеждане на всички бюра" << endl;
-		cout << "2. Извеждане на всички бюра с най-малка наличност за обмен" << endl;
-		cout << "3. Извеждане на всички бюра по година на основаване" << endl;
-		cout << "4. Извеждане на всички бюра с дата на основаване в определен интервал" << endl;
-		cout << "5. Извеждане на бюра по цена на валута" << endl;
-		cout << "6. Извеждане на бюра по наличност" << endl;
-		cout << "7. Извеждане на бюра с по-малко от 6 валути" << endl;
-		cout << "8. Изход" << endl;
+		cout << "Print Menu" << endl;
+		cout << "1. Print all exchange offices" << endl;
+		cout << "2. Print all exchange offices with the lowest availability" << endl;
+		cout << "3. Print all exchange offices by year of founding" << endl;
+		cout << "4. Print exchange offices within a year interval" << endl;
+		cout << "5. Print exchange offices with the cheapest currency" << endl;
+		cout << "6. Print all exchange offices by availability" << endl;
+		cout << "7. Print exchange offices with less than six currencies" << endl;
+		cout << "8. Go back to the main menu" << endl;
 		cin >> option;
 		switch (option)
 		{
@@ -441,8 +441,8 @@ void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 
 		case 8:
 		{
-			cout << "Връщане към началното меню? \n"
-				"Изберете y за потвърждение или друга буква за отказ." << endl;
+			cout << "Are you sure you want to go back to the main menu? \n"
+				 << "Enter \"y\" to go back or another key to stay" << endl;
 			cin >> choice;
 			if (choice == 'y')
 			{
@@ -453,7 +453,7 @@ void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 		}
 		default:
 		{
-			cout << "Невалиден избор" << endl;
+			cout << "Invalid input" << endl;
 			break;
 		}
 		}
@@ -467,7 +467,7 @@ void PrintOfficesMenu(ExchangeOffice officesArray[], int* officesCount)
 void EditOffices(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
-	cout << "Въведете регистрационен номер: ";
+	cout << "Enter registration number: ";
 	cin >> registrationNumber;
 	system("CLS");
 
@@ -475,31 +475,31 @@ void EditOffices(ExchangeOffice officesArray[])
 	{
 		if (officesArray[i].RegistrationNumber == 0)
 		{
-			cout << endl << "Няма намерено обменно бюро с този номер" << endl;
+			cout << endl << "There is no exchange office with this registration number" << endl;
 			system("pause");
 			break;
 		}
 		else if (officesArray[i].RegistrationNumber == registrationNumber)
 		{
-			cout << "Редактиране на обменно бюро" << endl;
+			cout << "Editing an exchange office" << endl;
 
-			cout << "Име на обменното бюро: " << officesArray[i].Name << endl;
-			cout << "Ново име на обменното бюро: ";
+			cout << "Name: " << officesArray[i].Name << endl;
+			cout << "New name: ";
 			cin >> officesArray[i].Name;
 
-			cout << "Регистрационен номер на обменното бюро: " << officesArray[i].RegistrationNumber << endl;
-			cout << "Нов регистрационен номер на обменното бюро: ";
+			cout << "Registration number: " << officesArray[i].RegistrationNumber << endl;
+			cout << "New Registration number: ";
 			cin >> officesArray[i].RegistrationNumber;
 
-			cout << "Година на основаване на обменното бюро: " << officesArray[i].FoundingYear << endl;
-			cout << "Новата година на основаване на обменното бюро : ";
+			cout << "Year of founding: " << officesArray[i].FoundingYear << endl;
+			cout << "New year of founding: ";
 			cin >> officesArray[i].FoundingYear;
 
 			break;
 		}
 	}
 
-	cout << endl << "Бюрото е редактирано!" << endl;
+	cout << endl << "Successful edit!" << endl;
 	system("pause");
 }
 
@@ -509,7 +509,7 @@ void EditOffices(ExchangeOffice officesArray[])
 void AddCurrencyToOffice(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
-	cout << "Въведете регистрационен номер: ";
+	cout << "Enter registration number of the exchange office: ";
 	cin >> registrationNumber;
 	system("CLS");
 
@@ -517,13 +517,13 @@ void AddCurrencyToOffice(ExchangeOffice officesArray[])
 	{
 		if (officesArray[i].RegistrationNumber == 0)
 		{
-			cout << endl << "Няма намерено обменно бюро с този номер" << endl;
+			cout << endl << "There is no exchange office with this registration number!" << endl;
 			system("pause");
 			break;
 		}
 		else if (officesArray[i].RegistrationNumber == registrationNumber && officesArray[i].AvailableCurrencies >= MAXCURRENCIES)
 		{
-			cout << endl << "Обменното бюро вече има максималният брой валути" << endl;
+			cout << endl << "The exchange office already has the maximum amount of currencies" << endl;
 			system("pause");
 			break;
 		}
@@ -533,14 +533,14 @@ void AddCurrencyToOffice(ExchangeOffice officesArray[])
 			{
 				if (strcmp(EmptyString.c_str(), officesArray[i].Currencies[k].ISO) == 0)
 				{
-					cout << "Добавяне на обменна валута към бюрото" << endl;
+					cout << "Adding a currency" << endl;
 					cout << "ISO:";
 					cin >> officesArray[i].Currencies[k].ISO;
-					cout << "Курс купува:";
+					cout << "Buying rate:";
 					cin >> officesArray[i].Currencies[k].BuyRate;
-					cout << "Курс продава:";
+					cout << "Selling rate:";
 					cin >> officesArray[i].Currencies[k].SellRate;
-					cout << "Максимална стойност за обмен:";
+					cout << "Available amount:";
 					cin >> officesArray[i].Currencies[k].MaxExchange;
 
 					officesArray[i].AvailableCurrencies++;
@@ -551,7 +551,7 @@ void AddCurrencyToOffice(ExchangeOffice officesArray[])
 		}
 	}
 
-	cout << endl << "Валутата е добавена!" << endl;
+	cout << endl << "The currency was added!" << endl;
 	system("pause");
 }
 
@@ -561,7 +561,7 @@ void ExchangeCurrency(ExchangeOffice officesArray[])
 {
 	int registrationNumber = 0;
 	int tempISOIndex = 0;
-	cout << "Въведете регистрационен номер: ";
+	cout << "Enter registration number of the exchange office: ";
 	cin >> registrationNumber;
 	system("CLS");
 
@@ -574,17 +574,17 @@ void ExchangeCurrency(ExchangeOffice officesArray[])
 			{
 				if (officesArray[i].Currencies[k].MaxExchange != 0)
 				{
-					cout << "Налични валути в бюрото" << endl;
+					cout << "Currencies in the exchange office" << endl;
 					cout << k + 1 << ". "
 						<< "ISO: " << officesArray[i].Currencies[k].ISO << endl
-						<< "Курс купува: " << officesArray[i].Currencies[k].BuyRate << endl
-						<< "Курс продава: " << officesArray[i].Currencies[k].SellRate << endl
-						<< "Максимална стойност за обмен: " << officesArray[i].Currencies[k].MaxExchange;
+						<< "Buying rate: " << officesArray[i].Currencies[k].BuyRate << endl
+						<< "Selling rate: " << officesArray[i].Currencies[k].SellRate << endl
+						<< "Available amount: " << officesArray[i].Currencies[k].MaxExchange;
 
 				}
 			}
 
-			cout << endl << "Въведете номера на валутата която искате да обмените: ";
+			cout << endl << "Enter the number of the currency you want to exchange: ";
 			cin >> tempISOIndex;
 
 			for (int k = 0; k < MAXCURRENCIES; k++)
@@ -592,28 +592,28 @@ void ExchangeCurrency(ExchangeOffice officesArray[])
 				if (tempISOIndex - 1 == k)
 				{
 					float sumToExchange = 0;
-					cout << "Въведете суматата която искате да обмените: ";
+					cout << "Enter the amount you want to exchange: ";
 					cin >> sumToExchange;
 
 					if (sumToExchange > officesArray[i].Currencies[k].MaxExchange)
 					{
-						cout << "Сумата е по-висока от максималната за дадената валута" << endl;
+						cout << "The amount is higher than the available currency" << endl;
 						break;
 					}
 					else
 					{
 						string choice = "";
 						system("CLS");
-						cout << "Дължите " << sumToExchange * officesArray[i].Currencies[k].SellRate << endl
-							<< "Обмен yes/no: ";
+						cout << "You owe " << sumToExchange * officesArray[i].Currencies[k].SellRate << endl
+							<< "Exchange y/n: ";
 						cin >> choice;
 						if (choice == "yes")
 						{
 							officesArray[i].Currencies[k].MaxExchange -= sumToExchange;
-							cout << "Сумата е обменена" << endl;
+							cout << "The amount has been exchanged" << endl;
 							break;
 						}
-						else cout << "Връщане към менюто" << endl;
+						else cout << "Going back to the menu" << endl;
 					}
 
 				}
@@ -632,7 +632,7 @@ void OfficeBinaryFileSave(ExchangeOffice officesArray[], int* officesCount)
 
 	file.write((char*)&officesArray, *officesCount * sizeof(ExchangeOffice));
 
-	cout << "Данните са записани" << endl;
+	cout << "The data has been saved" << endl;
 	file.close();
 	system("pause");
 }
@@ -652,15 +652,13 @@ void OfficeBinaryFileRead(ExchangeOffice officesArray[], int& officesCount)
 	file.read((char*)&officesArray, officesCount * (sizeof(ExchangeOffice)));
 	file.close();
 
-	cout << "Данните са прочетени" << endl;
+	cout << "The data has been loaded" << endl;
 	system("pause");
 }
 
 
 int main()
 {
-	setlocale(LC_ALL, "BG");
-
 	ExchangeOffice Offices[MAXOFFICES];
 	int OfficesCount = 0;
 	OfficeBinaryFileRead(Offices, OfficesCount);
@@ -669,14 +667,14 @@ int main()
 	char choice = 'n';
 	do {
 		system("CLS");
-		cout << "\nИзберете действие" << endl;
-		cout << "1. Добавяне на обменно бюро" << endl;
-		cout << "2. Добавяне на списък с обменни бюра" << endl;
-		cout << "3. Добавяне на валута към обменно бюро" << endl;
-		cout << "4. Редактиране на бюро" << endl;
-		cout << "5. Меню за извеждане" << endl;
-		cout << "6. Обмяна на валута" << endl;
-		cout << "7. Изход" << endl;
+		cout << "Main menu" << endl;
+		cout << "1. Add an exchange office" << endl;
+		cout << "2. Add multiple exchange offices" << endl;
+		cout << "3. Add currency to an exchange office" << endl;
+		cout << "4. Edit an exchange office" << endl;
+		cout << "5. Print menu" << endl;
+		cout << "6. Exchange currency" << endl;
+		cout << "7. Exit" << endl;
 		cin >> option;
 		switch (option)
 		{
@@ -718,8 +716,8 @@ int main()
 		}
 		case 7:
 		{
-			cout << "Наистина ли искате да напуснете програмата? \n"
-				"Изберете y за потвърждение или друга буква за отказ." << endl;
+			cout << "Are you sure you want to exit the application? \n"
+				"Enter \"y\" to exit or another key to stay." << endl;
 			cin >> choice;
 			if (choice == 'y')
 			{
@@ -730,7 +728,7 @@ int main()
 		}
 		default:
 		{
-			cout << "Невалиден избор" << endl;
+			cout << "Invalid input" << endl;
 			break;
 		}
 		}
